@@ -5,7 +5,7 @@
     <PackageId>SingularFrameworkCore.Repository.FileSystem.TextFile</PackageId>
     <Version>0.1.0-alpha</Version>
     <Authors>Mohammad Ayaad</Authors>
-    <Description>A library providing an implementation of SingularFrameworkCore.Repository.ISingularCrudRepository<string> SingularFrameworkCore.Repository.ISingularCrudAsyncRepository<string> and for a text file on the file system</Description>
+    <Description>A library providing an implementation of SingularFrameworkCore.Repository.ISingularCrudRepository&lt;string&gt; SingularFrameworkCore.Repository.ISingularCrudAsyncRepository&lt;string&gt; and for a text file on the file system</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/MohammadAyaad/SingularFrameworkCore.Repository.FileSystem.TextFile</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MohammadAyaad/SingularFrameworkCore.Repository.FileSystem.TextFile</RepositoryUrl>
@@ -17,6 +17,9 @@
 
   <ItemGroup>
     <PackageReference Include="SingularFrameworkCore" Version="0.1.0-alpha" />
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <None Include="LICENSE" Pack="true" PackagePath="/" />
   </ItemGroup>
+  
 
 </Project>
