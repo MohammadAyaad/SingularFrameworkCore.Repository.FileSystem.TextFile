@@ -13,7 +13,7 @@ public class TextFileRepositoryAsync : ISingularCrudAsyncRepository<string>
     {
         if (!File.Exists(this.Path))
         {
-            File.Create(this.Path);
+            File.Create(this.Path).Close();
             await File.WriteAllTextAsync(this.Path, entity);
         }
         else

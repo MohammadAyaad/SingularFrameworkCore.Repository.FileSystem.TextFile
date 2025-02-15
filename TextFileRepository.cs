@@ -13,7 +13,7 @@ public class TextFileRepository : ISingularCrudRepository<string>
     {
         if (!File.Exists(this.Path))
         {
-            File.Create(this.Path);
+            File.Create(this.Path).Close();
             File.WriteAllText(this.Path, entity);
         }
         else
