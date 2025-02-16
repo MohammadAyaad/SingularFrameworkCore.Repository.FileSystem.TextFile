@@ -3,21 +3,32 @@
 public class TextFileRepository : ISingularCrudRepository<string>
 {
     public string Path { get; }
+    public bool Overwrite { get; set; }
 
-    public TextFileRepository(string path)
+    public TextFileRepository(string path, bool overwrite = false)
     {
         this.Path = path;
+        this.Overwrite = overwrite;
     }
 
     public void Create(string entity)
     {
         if (!File.Exists(this.Path))
         {
-            File.Create(this.Path);
+            File.Create(this.Path).Close();
             File.WriteAllText(this.Path, entity);
         }
         else
-            throw new TextFileRepositoryFileAlreadyExistsException("File already exists");
+        {
+            if (this.Overwrite)
+            {
+                File.Delete(this.Path);
+                File.Create(this.Path).Close();
+                File.WriteAllText(this.Path, entity);
+            }
+            else
+                throw new TextFileRepositoryFileAlreadyExistsException("File already exists");
+        }
     }
 
     public string Read()

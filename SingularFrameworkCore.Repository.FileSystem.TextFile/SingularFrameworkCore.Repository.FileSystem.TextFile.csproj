@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>SingularFrameworkCore.Repository.FileSystem.TextFile</PackageId>
-    <Version>0.1.0-alpha</Version>
+    <Version>0.2.0-beta</Version>
     <Authors>Mohammad Ayaad</Authors>
     <Description>A library providing an implementation of SingularFrameworkCore.Repository.ISingularCrudRepository&lt;string&gt; SingularFrameworkCore.Repository.ISingularCrudAsyncRepository&lt;string&gt; and for a text file on the file system</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -17,8 +17,8 @@
 
   <ItemGroup>
     <PackageReference Include="SingularFrameworkCore" Version="0.1.0-alpha" />
-    <None Include="README.md" Pack="true" PackagePath="/" />
-    <None Include="LICENSE" Pack="true" PackagePath="/" />
+    <None Include="../README.md" Pack="true" PackagePath="/" />
+    <None Include="../LICENSE" Pack="true" PackagePath="/" />
   </ItemGroup>
   
 

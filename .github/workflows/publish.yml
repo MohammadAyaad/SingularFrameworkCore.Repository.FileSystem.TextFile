@@ -1,7 +1,11 @@
-# .github/workflows/publish.yml
 name: Publish to NuGet
 
 on:
+  workflow_run:
+    workflows: 
+      - "Run Unit Tests"
+      - "Check Code Formatting"
+    types: [completed]
   push:
     branches:
       - master
@@ -10,7 +14,8 @@ on:
     
 
 jobs:
-  build:
+  deploy:
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -33,4 +38,4 @@ jobs:
       run: dotnet pack --configuration Release --no-build -o out
     
     - name: Push to NuGet
-      run: dotnet nuget push ./out/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./out/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate

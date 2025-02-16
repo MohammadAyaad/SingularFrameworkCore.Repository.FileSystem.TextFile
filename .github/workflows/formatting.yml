@@ -1,0 +1,23 @@
+name: Check Code Formatting
+
+on: [ push, pull_request ]
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install CSharpier
+        run: |
+            dotnet tool install -g csharpier
+            echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+            export PATH="$PATH:$HOME/.dotnet/tools"
+
+      - name: Check formatting
+        run: dotnet csharpier --check ./SingularFrameworkCore.Repository.FileSystem.TextFile/ ./SingularFrameworkCore.Repository.FileSystem.TextFile.Tests/
